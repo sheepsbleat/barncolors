@@ -17,7 +17,7 @@ export default {
     marginBottom: "-3.5px",
     opacity: 1,
     backgroundColor: "black",
-    "& a": {
+    "& span": {
       color: "white",
       width: "100px",
       height: "30px",

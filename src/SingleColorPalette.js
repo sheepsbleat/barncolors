@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import styles from "./styles/PaletteStyles";
@@ -27,6 +27,9 @@ class SingleColorPalette extends Component {
   changeFormat(val) {
     this.setState({ format: val });
   }
+  goBack = () => {
+    this.props.history.goBack();
+  }
   render() {
     const { format } = this.state;
     const { paletteName, emoji, id } = this.props.palette;
@@ -45,7 +48,7 @@ class SingleColorPalette extends Component {
         <div className={classes.colors}>
           {colorBoxes}
           <div className={classes.goBack}>
-            <Link to={`/palette/${id}`}>GO BACK</Link>
+            <span onClick={this.goBack}>GO BACK</span>
           </div>
         </div>
         <PaletteFooter paletteName={paletteName} emoji={emoji} />
@@ -53,4 +56,4 @@ class SingleColorPalette extends Component {
     );
   }
 }
-export default withStyles(styles)(SingleColorPalette);
+export default withStyles(styles)(withRouter(SingleColorPalette));
