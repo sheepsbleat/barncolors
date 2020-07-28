@@ -15,6 +15,7 @@ import DraggableColorList from "./DraggableColorList";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { ChromePicker } from "react-color";
 import { arrayMove } from "react-sortable-hoc";
+import randomName from "./utils/Name";
 
 const drawerWidth = 400;
 
@@ -84,7 +85,7 @@ class NewPaletteForm extends Component {
       currentColor: "teal",
       newColorName: "",
       colors: [],
-      newPaletteName: ""
+      newPaletteName: randomName()
     };
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
