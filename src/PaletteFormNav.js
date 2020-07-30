@@ -10,6 +10,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import randomName from "./utils/Name";
+import { withStyles } from "@material-ui/styles";
+
+
 
 class PaletteFormNav extends Component {
     state = {
