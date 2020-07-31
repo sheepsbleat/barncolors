@@ -12,7 +12,7 @@ import randomName from "./utils/Name";
 class PaletteMetaForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this                     .state = {
       open: false,
       newPaletteName: randomName()
     };
