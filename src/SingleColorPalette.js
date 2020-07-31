@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import styles from "./styles/PaletteStyles";
@@ -32,7 +32,7 @@ class SingleColorPalette extends Component {
   }
   render() {
     const { format } = this.state;
-    const { paletteName, emoji, id } = this.props.palette;
+    const { paletteName, emoji } = this.props.palette;
     const { classes } = this.props;
     const colorBoxes = this._shades.map(color => (
       <ColorBox

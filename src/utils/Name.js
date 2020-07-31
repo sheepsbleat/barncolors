@@ -1,4 +1,3 @@
-import color from "@material-ui/core/colors/amber";
 
 function randomName() {
 const colors = ["red", "green", "blue", "yellow", "pink", "rainbow", "indigo"];
