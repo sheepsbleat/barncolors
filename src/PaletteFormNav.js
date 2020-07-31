@@ -40,7 +40,7 @@ const styles = theme => ({
   },
   navBtns: {
     marginRight: "1rem",
-    "& a" : {
+    "& a": {
       textDecoration: "none"
     }
   },
@@ -70,6 +70,9 @@ class PaletteFormNav extends Component {
 
   showForm = () => {
     this.setState({ formShowing: true })
+  }
+  hideForm = () => {
+    this.setState({ formShowing: false })
   }
   render() {
     const { classes, open, palettes, handleSubmit } = this.props;
@@ -112,7 +115,7 @@ class PaletteFormNav extends Component {
             >
               Save
         </Button>
-            {this.state.formShowing && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />}
+            {this.state.formShowing && <PaletteMetaForm hideForm={this.hideForm} palettes={palettes} handleSubmit={handleSubmit} />}
 
           </div>
         </AppBar>
