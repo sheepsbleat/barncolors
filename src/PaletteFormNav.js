@@ -17,6 +17,7 @@ const styles = theme => ({
     display: "flex"
   },
   appBar: {
+    alignItems: "center",
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -37,13 +38,27 @@ const styles = theme => ({
     marginLeft: 12,
     marginRight: 20
   },
-  navBtns: {}
+  navBtns: {
+    marginRight: "1rem",
+    "& a" : {
+      textDecoration: "none"
+    }
+  },
+  button: {
+    margin: "0.5rem",
+    "& a": {
+      textDecoration: "none"
+    }
+  },
+  link: {
+    textDecoration: "none"
+  }
 });
 
 class PaletteFormNav extends Component {
   constructor(props) {
     super(props);
-    this.state = { newPaletteName: "" };
+    this.state = { newPaletteName: "", formShowing: false };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -52,10 +67,15 @@ class PaletteFormNav extends Component {
       [evt.target.name]: evt.target.value
     });
   }
+
+  showForm = () => {
+    this.setState({ formShowing: true })
+  }
   render() {
     const { classes, open, palettes, handleSubmit } = this.props;
     return (
       <div className={classes.root}>
+
         <CssBaseline />
         <AppBar
           position='fixed'
@@ -78,12 +98,22 @@ class PaletteFormNav extends Component {
             </Typography>
           </Toolbar>
           <div className={classes.navBtns}>
-            <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
-            <Link to='/'>
-              <Button variant='contained' color='secondary'>
+
+            <Link to='/' className={classes.link}>
+              <Button variant='contained' color='secondary' className={classes.button}>
                 Go Back
               </Button>
             </Link>
+            <Button
+              className={classes.button}
+              variant='contained'
+              color='primary'
+              onClick={this.showForm}
+            >
+              Save
+        </Button>
+            {this.state.formShowing && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />}
+
           </div>
         </AppBar>
       </div>
