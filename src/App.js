@@ -27,11 +27,20 @@ class App extends Component {
     );
   }
   syncLocalStorage = () => {
-    console.log("syncing");
     window.localStorage.setItem(
       "palettes",
       JSON.stringify(this.state.palettes)
     );
+  };
+  deletePalette = (id) => {
+    if (this.state.palettes.length > 1) {
+      this.setState(
+        (st) => ({
+          palettes: st.palettes.filter((palette) => palette.id !== id),
+        }),
+        this.syncLocalStorage
+      );
+    }
   };
   render() {
     return (
@@ -63,7 +72,11 @@ class App extends Component {
           exact
           path="/"
           render={(routeProps) => (
-            <PaletteList palettes={this.state.palettes} {...routeProps} />
+            <PaletteList
+              deletePalette={this.deletePalette}
+              palettes={this.state.palettes}
+              {...routeProps}
+            />
           )}
         />
         <Route
